@@ -4179,6 +4179,9 @@ var SamSchema = `{
                         "IntegrationMethod": {
                             "type": "string"
                         },
+                        "IntegrationSubtype": {
+                            "type": "string"
+                        },
                         "IntegrationType": {
                             "type": "string"
                         },
@@ -28641,7 +28644,7 @@ var SamSchema = `{
                             "type": "string"
                         },
                         "RepositoryPolicyText": {
-                            "type": "object"
+                            "type": "string"
                         },
                         "Tags": {
                             "items": {
@@ -29294,9 +29297,6 @@ var SamSchema = `{
                             },
                             "type": "array"
                         },
-                        "TaskDefinitionStatus": {
-                            "type": "string"
-                        },
                         "TaskRoleArn": {
                             "type": "string"
                         },
@@ -29624,7 +29624,13 @@ var SamSchema = `{
             "additionalProperties": false,
             "properties": {
                 "Options": {
-                    "$ref": "#/definitions/AWS::ECS::TaskDefinition.Options"
+                    "additionalProperties": true,
+                    "patternProperties": {
+                        "^[a-zA-Z0-9]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 },
                 "Type": {
                     "type": "string"
@@ -29759,7 +29765,13 @@ var SamSchema = `{
                     "type": "string"
                 },
                 "Options": {
-                    "$ref": "#/definitions/AWS::ECS::TaskDefinition.Options"
+                    "additionalProperties": true,
+                    "patternProperties": {
+                        "^[a-zA-Z0-9]+$": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 },
                 "SecretOptions": {
                     "items": {
@@ -29786,11 +29798,6 @@ var SamSchema = `{
                     "type": "string"
                 }
             },
-            "type": "object"
-        },
-        "AWS::ECS::TaskDefinition.Options": {
-            "additionalProperties": false,
-            "properties": {},
             "type": "object"
         },
         "AWS::ECS::TaskDefinition.PortMapping": {
@@ -46362,7 +46369,7 @@ var SamSchema = `{
                             "type": "boolean"
                         },
                         "KeyPolicy": {
-                            "type": "object"
+                            "type": "string"
                         },
                         "KeyUsage": {
                             "type": "string"
@@ -64481,6 +64488,9 @@ var SamSchema = `{
                                 "$ref": "#/definitions/AWS::SageMaker::Model.ContainerDefinition"
                             },
                             "type": "array"
+                        },
+                        "EnableNetworkIsolation": {
+                            "type": "boolean"
                         },
                         "ExecutionRoleArn": {
                             "type": "string"

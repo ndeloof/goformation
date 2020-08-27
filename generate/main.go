@@ -10,7 +10,7 @@ func main() {
 	fmt.Printf("GoFormation Resource Generator\n")
 
 	// Fetch and process the AWS published CloudFormation Resource Specification
-	cloudformationSpec := "https://d1uauaxba7bl26.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json"
+	cloudformationSpec := "file:///home/nicolas/go/src/github.com/awslabs/goformation/schema.json"
 
 	otherSpecs := map[string]string{
 		// We have a manually generated SAM specification in this repo too
